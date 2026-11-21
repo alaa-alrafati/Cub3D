@@ -1,5 +1,4 @@
 *This project has been created as part of the 42 curriculum by aalrofat, hsbeh.*
-*This project has been created as part of the 42 curriculum by aalrofat, hsbeh.*
 
 # cub3D - 3D Horror Maze Game
 
