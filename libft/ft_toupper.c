@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
-/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
+/*   Created: 2026/04/23 15:32:16 by hsbeh             #+#    #+#             */
+/*   Updated: 2026/04/23 15:32:18 by hsbeh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_int.h"
+#include "libft.h"
 
-int	mlx_destroy_display(t_xvar *xvar)
+int	ft_toupper(int c)
 {
-	XCloseDisplay(xvar->display);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
+/*int main ()
+{
+    char a = 'S';
+    printf("%c ",  ft_toupper(a));
+
+}*/

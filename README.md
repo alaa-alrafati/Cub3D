@@ -2,7 +2,7 @@
 
 # cub3D - 3D Horror Maze Game
 
-![cub3D Preview](images/image1.jpg)
+![cub3D Preview](./img/our_game.png)
 
 ## Description (About The Project)
 **cub3D** is our first 3D graphical project at 42 Amman, built in C using the **MiniLibX** library. The main idea of this project is to create a 3D maze from a 2D map using **Raycasting (DDA Algorithm)**, similar to the classic *Wolfenstein 3D* game.
@@ -55,8 +55,9 @@ make bonus
 ---
 
 ## Resources & References
-* **[So-Long 42 project](https://cdn.intra.42.fr/pdf/pdf/220244/en.subject.pdf)** : Used as a core reference and foundation for map parsing logic, file reading, and error handling.
+* **[So-Long 42 project]** : Used as a core reference and foundation for map parsing logic, file reading, and error handling.
 * **[What is RayCasting](https://42-fran-byte-f94097.gitlab.io/docs/cub3d/cub3d-approach-en/#/).**
+* **[dda-algorithm](https://aaaa.sh/creatures/dda-algorithm-interactive/).**
 
 
 * **AI Usage:**
