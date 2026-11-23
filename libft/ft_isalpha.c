@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:28:57 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:58 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/04 16:26:20 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/04 16:48:07 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int	ft_isalpha(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	{
 		return (1);
-	return (0);
+	}
+	else
+	{
+		return (0);
+	}
 }
 /*int main ()
 {
-    char c ='3';
-    if(isalpha(c) == 1)
-    {
-        printf("%c is an alphabetic character.\n" ,c);
-    }else{
-         printf("%c is not an alphabetic character.\n", c);
-    }
-
+    int c1 = 'a';
+    ft_isalpha(c1);
+    int z = ft_isalpha(c1);
+    printf ("%d", z);
 }*/

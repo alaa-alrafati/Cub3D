@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:29:51 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:29:52 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/11 12:50:52 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/27 11:59:14 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*string;
+	unsigned char	*str;
+	size_t			x;
 
-	string = (unsigned char *)s;
-	while (n--)
+	str = (unsigned char *)s;
+	x = 0;
+	while (x < n)
 	{
-		if (*string == (unsigned char)c)
+		if (str[x] == (unsigned char)c)
 		{
-			return ((void *)string);
+			return (str + x);
 		}
-		string++;
+		x++;
 	}
 	return (NULL);
 }
 /*int main ()
 {
-	char a[20]="hello world!";
-	printf("%s" ,(char *)ft_memchr(a,'o',4) );
+    char s1[] = "Hello Everyone";
+    char *result = ft_memchr(s1, 'l', 5);
+    printf("%s\n", result);
 }*/

@@ -3,102 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:37 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:38 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/18 11:49:11 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/27 13:58:03 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_word(char const *s, char delimiter)
+static size_t	count_strings(char const *s, char c)
 {
-	size_t	words;
+	size_t	everystr;
+	size_t	x;
 
-	words = 0;
-	while (*s)
+	x = 0;
+	everystr = 0;
+	while (s[x] != '\0')
 	{
-		while (*s && *s == delimiter)
-			s++;
-		if (*s && *s != delimiter)
+		while (s[x] == c)
+			x++;
+		if (s[x] != '\0' && s[x] != c)
 		{
-			words++;
-			while (*s && *s != delimiter)
-				s++;
+			everystr++;
+			while (s[x] != '\0' && s[x] != c)
+				x++;
 		}
 	}
-	return (words);
+	return (everystr);
 }
 
-static char	*allocat_word(const char *s, char delimiter)
+static char	*copy_string(char const *s, size_t sw, size_t y)
 {
-	size_t	len;
+	char	*string;
 	size_t	i;
-	char	*word;
 
-	len = 0;
-	while (s[len] && s[len] != delimiter)
-		len++;
-	word = malloc(sizeof(char) * (len + 1));
-	if (word == NULL)
+	string = (char *)malloc(((y - sw) + 1) * sizeof(char));
+	if (string == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < y - sw)
 	{
-		word[i] = s[i];
+		string[i] = s[sw + i];
 		i++;
 	}
-	word[len] = '\0';
-	return (word);
+	string[i] = '\0';
+	return (string);
 }
 
-static void	free_split_words(char **split_words)
+static void	free_split(char **splitarray, size_t x)
 {
-	size_t	i;
-
-	i = 0;
-	while (split_words && split_words[i])
-		free(split_words[i++]);
-	free(split_words);
-}
-
-static char	**my_splitter(char const *s, char delimiter, char **split_words)
-{
-	size_t	words;
-
-	words = 0;
-	while (*s != '\0')
+	while (x > 0)
 	{
-		while (*s != '\0' && *s == delimiter)
-			s++;
-		if (*s && *s != delimiter)
+		x--;
+		free(splitarray[x]);
+	}
+	free(splitarray);
+}
+
+static char	**storage_string(char const *s, char c, char **splitarray)
+{
+	size_t	sw;
+	size_t	y;
+	size_t	x;
+
+	y = 0;
+	x = 0;
+	while (s[y] != '\0')
+	{
+		while (s[y] == c)
+			y++;
+		if (s[y] != '\0' && s[y] != c)
 		{
-			split_words[words] = allocat_word(s, delimiter);
-			if (split_words[words] == NULL)
+			sw = y;
+			while (s[y] != '\0' && s[y] != c)
+				y++;
+			splitarray[x] = copy_string(s, sw, y);
+			if (splitarray[x] == NULL)
 			{
-				free_split_words(split_words);
-				return (NULL);
+				return (free_split(splitarray, x), NULL);
 			}
-			words++;
-			while (*s != '\0' && *s != delimiter)
-				s++;
+			x++;
 		}
 	}
-	split_words[words] = NULL;
-	return (split_words);
+	splitarray[x] = NULL;
+	return (splitarray);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	words;
-	char	**split_words;
+	char	**splitarray;
 
 	if (s == NULL)
 		return (NULL);
-	words = count_word(s, c);
-	split_words = (char **)malloc((words + 1) * sizeof(char *));
-	if (split_words == NULL)
+	splitarray = (char **)malloc((count_strings(s, c) + 1) * sizeof(char *));
+	if (splitarray == NULL)
 		return (NULL);
-	return (my_splitter(s, c, split_words));
+	return (storage_string(s, c, splitarray));
 }
+/*int main()
+{
+    char    s1[] = "Hello guys everyone";
+    char    c1 = ' ';
+    char **splitstr1 = ft_split(s1, c1);
+    for (int f = 0; splitstr1[f] != NULL; f++)
+	{
+        printf("%s\n", splitstr1[f]);
+		free(splitstr1[f]);
+	}
+    free(splitstr1);
+}*/

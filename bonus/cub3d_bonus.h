@@ -20,6 +20,7 @@
 # include <sys/time.h>
 # include <math.h>
 # include "mlx.h"
+# include "get_next_line.h"
 # include "libft.h"
 
 # define WINDOW_W 1024

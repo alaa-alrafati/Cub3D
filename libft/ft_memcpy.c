@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:05 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:06 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/11 10:01:42 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/30 10:23:27 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,24 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char			*d;
-	const unsigned char		*s;
-	size_t					i;
+	const unsigned char	*source;
+	unsigned char		*dst;
+	size_t				x;
 
-	i = 0;
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	while (i < n)
+	source = (const unsigned char *)src;
+	dst = (unsigned char *)dest;
+	x = 0;
+	while (x < n)
 	{
-		d[i] = s[i];
-		i++;
+		dst[x] = source[x];
+		x++;
 	}
 	return (dest);
 }
+/*int main()
+{
+    char s1[6] = "A B C";
+    char dst1[6];
+    ft_memcpy(dst1, s1, 6);
+    printf("%s\n", dst1);
+}*/

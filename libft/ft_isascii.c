@@ -3,30 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:29:01 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:29:02 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/06 15:19:24 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/06 16:04:36 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int x)
+int	ft_isascii(int c)
 {
-	if (x >= 0 && x <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
-/*int main ()
+/*int main()
 {
-
-    int x = 140;
-    if(ft_isascii(x))
-        printf("%d is ascii ", x);
-
-    else
-        printf("%d is NOT ascii ", x);
-
-
+    int c1 = '+';
+    int x = isascii(c1);
+    printf("%i\n", x);
 }*/

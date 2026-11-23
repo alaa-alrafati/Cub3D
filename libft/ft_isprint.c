@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:29:11 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:29:12 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/06 15:41:48 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/06 16:11:27 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int x)
+int	ft_isprint(int c)
 {
-	if (x >= 32 && x <= 126)
+	if (c >= 32 && c <= 126)
+	{
 		return (1);
-	return (0);
+	}
+	else
+	{
+		return (0);
+	}
 }
-/*int main ()
+/*int main()
 {
-
-    int x = 40;
-    if(ft_isprint(x))
-        printf("%d is printable\n ", x);
-
-    else
-        printf("%d is NOT printable\n ", x);
-
-
+    int c1 = '\b';
+    int x = isascii(c1);
+    printf("%i\n", x);
 }*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:32:09 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:32:10 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/16 12:33:12 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/30 11:37:38 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,35 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t		i;
-	size_t		s_len;
-	char		*substr;
+	char	*substr;
+	size_t	x;
+	size_t	length;
 
 	if (s == NULL)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	length = ft_strlen(s);
+	if (start >= length)
+	{
 		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = (char *)malloc (len + 1);
+	}
+	if (len > length - start)
+		len = length - start;
+	substr = (char *)malloc(len + 1 * sizeof(char));
 	if (substr == NULL)
 		return (NULL);
-	i = 0;
-	while (i < len && s[start + i] != '\0')
+	x = 0;
+	while (s[x] != '\0' && x < len)
 	{
-		substr[i] = s[start + i];
-		i++;
+		substr[x] = s[start + x];
+		x++;
 	}
-	substr[i] = '\0';
+	substr[x] = '\0';
 	return (substr);
 }
-/*int main ()
+/*int main()
 {
-	char *s ="hello_world";
-	printf("%s\n",ft_substr(s,1,6));
+    char s1[14] = "Hello everyone";
+    char *subresult =  ft_substr(s1, 1, 10);
+    printf("%s\n", subresult);
+    free(subresult);
 }*/

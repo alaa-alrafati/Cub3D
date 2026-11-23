@@ -3,33 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:28:53 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:54 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/06 09:30:35 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/20 15:36:24 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int x)
+int	ft_isalnum(int c)
 {
-	if (!((x >= 'A' && x <= 'Z')
-			|| (x >= 'a' && x <= 'z')
-			|| (x >= '0' && x <= '9')))
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	else
+	{
 		return (0);
-	return (1);
+	}
 }
-/*int main ()
+/*int main()
 {
-    int x = '*';
-    if  (ft_isalnum (x))
-    {
-        printf("all\n ");
-
-    }
-    else
-    {
-        printf(" NOT\n ");
-    }
+    int a = 'a';
+    int z = ft_isalnum(a);
+    printf("%i\n", z);
 }*/

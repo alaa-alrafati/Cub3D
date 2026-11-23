@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:41 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:42 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/09 09:30:49 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/28 14:34:37 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,28 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0')
+	char	alp;
+	int		x;
+
+	alp = (char)c;
+	x = 0;
+	while (s[x] != '\0')
 	{
-		if (*s == (unsigned char)c)
+		if (s[x] == alp)
 		{
-			return ((char *) s);
+			return ((char *)(s + x));
 		}
-		s++;
+		x++;
 	}
-	if ((unsigned char)c == '\0')
-		return ((char *) s);
+	if (alp == '\0')
+	{
+		return ((char *)(s + x));
+	}
 	return (NULL);
 }
-/*
-int main ()
+/*int main()
 {
-	char a[15] ="helo";
-	//int w= 120;
-	printf("%s ",ft_strchr(a,'h'));
-}
-*/
+    char s1[] = "Hello Guys!";
+    char *alp1 = ft_strchr(s1, 'l');
+    printf("%s\n", alp1);
+}*/

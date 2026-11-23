@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:53 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:54 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/16 10:37:59 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/30 11:32:23 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,36 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*s1ands2;
-	size_t	s1_len;
-	size_t	s2_len;
+	char	*newstr;
+	size_t	ls1;
+	size_t	ls2;
+	size_t	x;
+	size_t	y;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	s1ands2 = malloc (s1_len + s2_len + 1);
-	if (s1ands2 == NULL)
+	ls1 = ft_strlen(s1);
+	ls2 = ft_strlen(s2);
+	newstr = (char *)malloc((ls1 + ls2 + 1) * sizeof(char));
+	if (newstr == NULL)
 		return (NULL);
-	ft_memcpy(s1ands2, s1, s1_len);
-	ft_memcpy(s1ands2 + s1_len, s2, s2_len);
-	s1ands2[s1_len + s2_len] = '\0';
-	return (s1ands2);
+	x = 0;
+	while (s1[x] != '\0')
+	{
+		newstr[x] = s1[x];
+		x++;
+	}
+	y = 0;
+	while (s2[y] != '\0')
+		newstr[x++] = s2[y++];
+	newstr[x] = '\0';
+	return (newstr);
 }
 /*int main()
 {
-    char *a = "hello";
-    char *b = "world!";
-    printf("%s\n",ft_strjoin(a,b));
+    char str1[] = "Hello ";
+    char str2[] = "Guys";
+    char *new = ft_strjoin(str1, str2);
+    printf("%s\n", new);
+    free(new);
 }*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:31:51 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:31:52 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/06 16:17:15 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/28 14:08:38 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
+	size_t	x;
+
+	x = 0;
+	while (s1[x] != '\0' && s2[x] != '\0' && x < n)
 	{
-		if ((unsigned char)*s1 != (unsigned char)*s2)
-		{
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		}
-		n--;
-		s1++;
-		s2++;
+		if (s1[x] != s2[x])
+			return ((unsigned char)s1[x] - (unsigned char)s2[x]);
+		x++;
 	}
+	if (x < n)
+		return ((unsigned char)s1[x] - (unsigned char)s2[x]);
 	return (0);
 }
-/*int main ()
+/*int main()
 {
-    char a[15]="hello world";
-    char b[15]="hellA world";
-    printf("%d ", ft_strncmp(a ,b ,5));
+    char a1[] = "ABE";
+    char a2[] = "ABEE";
+    int conclusion = ft_strncmp(a1, a2, 4);
+    printf("%d\n", conclusion);
 }*/

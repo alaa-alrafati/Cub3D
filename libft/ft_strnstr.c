@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:31:56 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:31:57 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/09 13:32:00 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/28 16:07:05 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,36 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	b;
-	size_t	l;
+	size_t	x;
+	size_t	y;
 
-	b = 0;
-	if (*little == '\0')
+	x = 0;
+	if (little[0] == '\0')
 	{
-		return ((char *) big);
+		return ((char *)(&big[x]));
 	}
-	while (big[b] != '\0' && b < len)
+	while (big[x] != '\0' && x < len)
 	{
-		l = 0;
-		while ((b + l) < len && big[b + l] == little[l])
+		y = 0;
+		while (big[x + y] == little[y] && x + y < len)
 		{
-			l++;
-			if (little[l] == '\0')
+			if (little[y + 1] == '\0')
 			{
-				return ((char *)(big + b));
+				return ((char *)(big + x));
 			}
+			y++;
 		}
-		b++;
+		x++;
 	}
 	return (NULL);
 }
-/*int main ()
+/*int main()
 {
-	char a[]="hello world";
-	char b[]="l";
-	printf("%s\n", ft_strnstr(a , b, 11));
+    char big1[] = "Alaa Mohammad Alrafati";
+    char little1[] = "Mohammad";
+    char * result = ft_strnstr(big1, little1, 13);
+    if (result != NULL)
+        printf("%s\n", result);
+    else
+            printf("%s\n", "NULL");
 }*/

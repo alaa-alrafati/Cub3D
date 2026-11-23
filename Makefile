@@ -5,14 +5,16 @@ CC = cc
 LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
 
-INCLUDES = -I. -Ibonus -I$(LIBFT_DIR) -I$(MLX_DIR)
+INCLUDES = -I. -Ibonus -I$(LIBFT_DIR) -I$(MLX_DIR) -Iget_next_line
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX = $(MLX_DIR)/libmlx.a
 MLX_LIBS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-SRC = parsing/cub3d.c \
+SRC = get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c \
+	parsing/cub3d.c \
 	parsing/parsing_line.c \
 	parsing/parsing_colors.c \
 	parsing/parsing_colors2.c \
@@ -29,7 +31,9 @@ SRC = parsing/cub3d.c \
 	execution/key_flag.c \
 	execution/clean_up_and_close.c
 
-SRC_BONUS = bonus/parsing/cub3d_bonus.c \
+SRC_BONUS = get_next_line/get_next_line.c \
+			get_next_line/get_next_line_utils.c \
+			bonus/parsing/cub3d_bonus.c \
 			bonus/parsing/free_error_bonus.c \
 			bonus/parsing/parse_map_bonus.c \
 			bonus/parsing/parse_wall_map_bonus.c \
@@ -61,7 +65,7 @@ all : $(MLX) $(LIBFT) $(NAME)
 bonus: $(MLX) $(LIBFT) $(BONUS_NAME)
 
 %.o: %.c $(HEADERFILE)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 bonus/%.o: bonus/%.c $(HEADERFILEBONUS)
 	$(CC) $(CFLAGS) -c $< -o $@

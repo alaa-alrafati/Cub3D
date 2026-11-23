@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:32:05 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:32:06 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/18 11:54:47 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/30 11:38:00 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,35 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimmed;
+	char	*trimstr;
 	size_t	start;
-	size_t	len;
 	size_t	end;
+	size_t	tlength;
+	size_t	x;
 
 	start = 0;
-	len = ft_strlen(s1);
 	if (s1 == NULL || set == NULL)
 		return (NULL);
 	while (s1[start] != '\0' && ft_strchr(set, s1[start]))
 		start++;
-	if (start == len)
-		return (ft_strdup(""));
-	end = len - 1;
-	while (end > start && ft_strchr(set, s1[end]))
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
-	len = end - start + 1;
-	trimmed = (char *)malloc (len + 1);
-	if (trimmed == NULL)
+	tlength = end - start;
+	trimstr = (char *)malloc((tlength + 1) * sizeof(char));
+	if (trimstr == NULL)
 		return (NULL);
-	ft_strlcpy(trimmed, s1 + start, len + 1);
-	return (trimmed);
+	x = 0;
+	while (x < tlength)
+		trimstr[x++] = s1[start++];
+	trimstr[x] = '\0';
+	return (trimstr);
 }
+/*int main()
+{
+    char str1[] = " \n%Hello guys \n";
+    char set1[] = " \n%";
+    char *tresult = ft_strtrim(str1, set1);
+    printf("%s\n", tresult);
+    free(tresult);
+}*/

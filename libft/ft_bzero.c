@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:28:43 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:44 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/09 09:17:49 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/28 15:09:23 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	size_t	x;
+	char	*z;
 
-	ptr = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	z = (char *)s;
+	x = 0;
+	while (x < n)
 	{
-		ptr[i] = 0;
-		i++;
+		z[x] = '\0';
+		x++;
 	}
 }
-/*int main(void)
+/*int main()
 {
-    char buffer[10] = "abcdefghi";
-
-    printf("Before: %s\n", buffer);
-    ft_bzero(buffer, 6);
-    printf("After:  %s\n", buffer);// Expected: (empty or garbage after nulls)
-
-    return 0;
+    char ex[7] = "HEllo!";
+    ft_bzero(ex, 7);
+  	printf("%s\n", ex);
 }*/

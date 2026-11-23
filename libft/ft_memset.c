@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:13 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:14 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/11 09:54:30 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/27 12:40:16 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*dest;
+	size_t			x;
 
-	ptr = (unsigned char *)s;
-	while (n > 0)
+	dest = (unsigned char *)s;
+	x = 0;
+	while (x < n)
 	{
-		*ptr = (unsigned char)c;
-		ptr++;
-		n--;
+		dest[x] = (unsigned char)c;
+		x++;
 	}
 	return (s);
 }
-/*int main(void)
+/*int main()
 {
-    char str1[20] = "Hello, World!";
-    ft_memset(str1, '*', 5);
-    printf("%s\n", str1);
+    char s1[4];
+    ft_memset(s1, '0', 4);
+	for (int i = 0; i < 4; i++)
+		printf("%c ", s1[i]);
+	printf("\n");
 }*/

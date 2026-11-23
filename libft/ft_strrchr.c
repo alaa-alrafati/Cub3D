@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:32:01 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:32:02 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/09 11:30:40 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/28 14:57:17 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,30 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char	*lastchr;
+	char	alph;
+	int		x;
 
-	lastchr = NULL ;
-	while (*s != '\0')
+	alph = (char)c;
+	x = 0;
+	while (s[x] != '\0')
+		x++;
+	while (x >= 0)
 	{
-		if (*s == (char) c)
+		if (s[x] == alph)
 		{
-			lastchr = s;
+			return ((char *)(s + x));
 		}
-		s++;
+		x--;
 	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return ((char *)lastchr);
+	if (alph == '\0')
+	{
+		return ((char *)(s + x));
+	}
+	return (NULL);
 }
-/*int main ()
+/*int main()
 {
-	char a[15] ="hello alla";
-	int w= 108;
-	printf("%s ",ft_strrchr(a,w));
+    char s1[] = "Hello alaa!";
+    char *alph1 = ft_strrchr(s1, 'l');
+    printf("%s\n", alph1);
 }*/

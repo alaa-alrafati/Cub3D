@@ -3,59 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:29:21 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:29:22 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/14 16:01:10 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/30 10:31:39 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-static int	count_digits(long n)
+static int	length_numb(int n)
 {
-	int	len;
+	int		length;
+	long	num;
 
-	if (n == 0)
-		return (1);
-	len = 0;
-	if (n < 0)
+	num = n;
+	length = 0;
+	if (num <= 0)
+		length = 1;
+	while (num != 0)
 	{
-		n = -n;
-		len++;
+		num = num / 10;
+		length++;
 	}
-	while (n != 0)
-	{
-		n = n / 10 ;
-		len++;
-	}
-	return (len);
+	return (length);
 }
 
 char	*ft_itoa(int n)
 {
-	long				num;
-	int					digits;
-	char				*s;
+	char	*chnumber;
+	int		length;
+	int		x;
+	long	num;
 
 	num = n;
-	digits = count_digits(num);
-	s = malloc(digits + 1);
-	if (s == NULL)
+	length = length_numb(num);
+	chnumber = (char *)malloc((length + 1) * sizeof(char));
+	if (chnumber == NULL)
 		return (NULL);
-	s[digits] = '\0';
+	chnumber[length] = '\0';
 	if (num == 0)
-		s[0] = '0';
+		chnumber[0] = '0';
 	if (num < 0)
 	{
-		s[0] = '-';
-		num = -num ;
+		chnumber[0] = '-';
+		num *= -1;
 	}
+	x = length - 1;
 	while (num > 0)
 	{
-		s[digits - 1] = (num % 10) + '0';
+		chnumber[x--] = num % 10 + '0';
 		num = num / 10;
-		digits--;
 	}
-	return (s);
+	return (chnumber);
 }
+/*int main()
+{
+    int n1 = 0;
+    char *thenumb = ft_itoa(n1);
+    printf("%s\n", thenumb);
+    free(thenumb);
+}*/

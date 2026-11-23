@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:30:01 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:30:03 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/11 14:10:47 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/25 18:41:18 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*ss1;
-	const unsigned char	*ss2;
+	const unsigned char	*v1;
+	const unsigned char	*v2;
+	size_t				x;
 
-	ss1 = (const unsigned char *)s1;
-	ss2 = (const unsigned char *)s2;
-	while (n != 0)
+	v1 = (const unsigned char *)s1;
+	v2 = (const unsigned char *)s2;
+	x = 0;
+	while (x < n)
 	{
-		if (*ss1 != *ss2)
+		if (v1[x] != v2[x])
 		{
-			return (*ss1 - *ss2);
+			return (v1[x] - v2[x]);
 		}
-		n--;
-		ss1++;
-		ss2++;
+		x++;
 	}
 	return (0);
 }
 /*int main()
 {
-	char a [20] ="helloa";
-	char b [20] ="hellob";
-	printf("%d", ft_memcmp(a , b , 6));
+    char str1[] = "ABC";
+    char str2[] = "ABCE";
+    int result = ft_memcmp(str1, str2, 4);
+    printf("%d\n", result);
 }*/

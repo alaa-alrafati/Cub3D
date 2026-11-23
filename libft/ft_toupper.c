@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:32:16 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:32:18 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/06 13:22:58 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/06 15:01:04 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	if (c >= 97 && c <= 122)
+	{
+		return (c -= 32);
+	}
+	else
+	{
+		return (c);
+	}
 }
 /*int main ()
-{
-    char a = 'S';
-    printf("%c ",  ft_toupper(a));
 
+{
+    char c1 = 'A';
+    char upper = ft_toupper(c1);
+    printf("the upper: %c\n", upper);
 }*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:31:19 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:31:20 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/14 14:45:10 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/16 10:38:38 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,41 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*new_s;
-	size_t			lenofs;
+	unsigned int	x;
+	char			*s2;
 
+	x = 0;
 	if (s == NULL || f == NULL)
 	{
 		return (NULL);
 	}
-	lenofs = 0;
-	while (s[lenofs] != '\0')
+	while (s[x] != '\0')
 	{
-		lenofs++;
+		x++;
 	}
-	new_s = malloc((lenofs + 1) * sizeof(char));
-	if (new_s == NULL)
+	s2 = (char *)malloc((x + 1) * sizeof(char));
+	if (s2 == NULL)
+	{
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		new_s[i] = f(i, s[i]);
-		i++;
 	}
-	new_s[lenofs] = '\0';
-	return (new_s);
+	x = 0;
+	while (s[x] != '\0')
+	{
+		s2[x] = f(x, s[x]);
+		x++;
+	}
+	s2[x] = '\0';
+	return (s2);
 }
+/*char    ftest(unsigned int i, char string2)
+{
+    if(string2 >= 'a' && string2 <= 'z')
+        return (string2 -= 32);
+}
+int main()
+{
+    char    string1[] = "AlaA";
+    char    *result = ft_strmapi(string1, ftest);
+    printf("%s\n", result);
+    free(result);
+}*/

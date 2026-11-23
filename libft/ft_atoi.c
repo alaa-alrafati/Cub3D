@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:28:28 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:29 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/09 13:36:36 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/08/14 16:20:55 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,33 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	z;
-	int	result;
+	int	x;
+	int	num;
+	int	fnum;
 
-	result = 0;
-	z = 1;
-	i = 0;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+	x = 0;
+	num = 1;
+	fnum = 0;
+	while ((nptr[x] >= 9 && nptr[x] <= 13) || (nptr[x] == 32))
 	{
-		i++;
+		x++;
 	}
-	if (nptr[i] == 45 || nptr[i] == 43)
+	if (nptr[x] == '+' || nptr[x] == '-')
 	{
-		if (nptr[i] == '-')
-		{
-			z = z * -1;
-		}
-		i++;
+		if (nptr[x] == '-')
+			num *= -1;
+		x++;
 	}
-	while (nptr[i] >= 48 && nptr[i] <= 57)
+	while (nptr[x] >= 48 && nptr[x] <= 57)
 	{
-		result = result * 10 + (nptr[i] - 48);
-		i++;
+		fnum = fnum * 10 + (nptr[x] - 48);
+		x++;
 	}
-	return (result * z);
+	return (fnum * num);
 }
-/*int main ()
+/*int main()
 {
-	char a [] ="bc123";
-	printf("%d" , ft_atoi(a));
+    char nptr1[] = "--24alaa";
+    int z = ft_atoi(nptr1);
+    printf("%d\n", z);
 }*/

@@ -3,51 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsbeh <hsbeh@student.42amman.com>          +#+  +:+       +#+        */
+/*   By: aalrofat <aalrofat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 15:28:48 by hsbeh             #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:49 by hsbeh            ###   ########.fr       */
+/*   Created: 2025/08/14 11:27:31 by aalrofat          #+#    #+#             */
+/*   Updated: 2025/09/01 12:49:24 by aalrofat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t len, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*a;
-	size_t			total_size;
-	size_t			i;
+	unsigned char	*pointer;
+	size_t			tsize;
+	void			*p;
+	size_t			x;
 
-	total_size = len * size;
-	if (len != 0 && total_size / len != size)
-		return (NULL);
-	if (total_size == 0)
-		return (malloc(1));
-	a = (unsigned char *)malloc(total_size);
-	if (a == NULL)
-		return (NULL);
-	i = 0;
-	while (i < total_size)
+	if (nmemb == 0 || size == 0)
 	{
-		a[i] = 0;
-		i++;
+		p = malloc(1);
+		if (p == NULL)
+			return (NULL);
+		((unsigned char *)p)[0] = '\0';
+		return (p);
 	}
-	return (a);
+	if (size != 0 && (nmemb > SIZE_MAX / size))
+		return (NULL);
+	tsize = nmemb * size;
+	p = malloc(tsize);
+	x = 0;
+	if (p == NULL)
+		return (NULL);
+	pointer = (unsigned char *)p;
+	while (x < tsize)
+		pointer[x++] = 0;
+	return (pointer);
 }
-/*
-int main(void)
+/*int main()
 {
-    int *ptr =ft_calloc(3,sizeof(int));
-    if (ptr == NULL)
-    {
-        printf("memory allocation failed\n");
-        return (1);
-    }
-    for (size_t i =0;i <3 ;i++)
-    {
-        printf("ptr[%zu] = %d \n", i, ptr[i]);
-    }
-    free(ptr);
-    return 0;
-}
-*/
+   int *p1 = ft_calloc(10, sizeof(int));
+   for (int i = 0; i < 10; i++)
+   {
+     	printf("%i ", p1[i]);
+   }
+   printf("\n");
+   free(p1);
+
+	//if (p1 == NULL)
+		//printf("NULL\n");
+	//else
+		//printf("No NULL %p\n", p1);
+	//free(p1);
+}*/
